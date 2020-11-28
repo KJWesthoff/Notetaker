@@ -18,9 +18,9 @@ router.post('/notes', (req,res) =>{
     newNote.id = uuidv4(); // add id to the package
     console.log('posted')
     console.log(newNote);
+    notes.push(newNote);
     res.json(newNote);
 });
-
 
 
 
