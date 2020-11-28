@@ -1,6 +1,11 @@
-{"notes":[
-    {
-        "title":"Test Title","text":"Test text"
-        }
-    ]
-}
+[
+  {
+    "title": "Test Title",
+    "text": "Test text"
+  },
+  {
+    "title": "asgas",
+    "text": "sagasgfds",
+    "id": "71ed31ec-4dc1-4387-9fea-0756f94aa7ba"
+  }
+]

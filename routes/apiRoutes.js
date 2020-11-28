@@ -1,9 +1,9 @@
 
-const path = require('path');
+
 const router = require('express').Router();
 const { notes } = require('../db/db.json');
 const { v4: uuidv4 } = require('uuid');
-
+const syncNotes = require('../lib/notes.js');
 
 
 
@@ -19,6 +19,7 @@ router.post('/notes', (req,res) =>{
     console.log('posted')
     console.log(newNote);
     notes.push(newNote);
+    syncNotes(notes)
     res.json(newNote);
 });
 
