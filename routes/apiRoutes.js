@@ -16,6 +16,7 @@ router.get('/notes', (req,res) =>{
 // api route by note id
 router.get('/notes/:id', (req, res) => {
     notes = loadNotes();
+  
     const result = findById(req.params.id, notes);
     if(result){
       res.json(result);
@@ -31,21 +32,18 @@ router.post('/notes', (req,res) =>{
     //console.log('posted')
     //console.log(newNote);
     notes.push(newNote);
-    syncNotes(notes)
+    syncNotes(notes);
     res.json(newNote);
 });
 
-router.delete('/notes:id', (req,res) => {
-    
-    //notes = loadNotes();
-    id = req.params.id;
-    console.log('del running' + id);
-    //newNotes = notes.filter(note => note.id != id);
-    
-    //console.log(newNote);
-    //res(JSON.stringify(newNotes));
-    res.send('Got a DELETE request at /user')
-});
+// delete a note, identified by id
+router.delete('/notes:id?', (req, res) => { 
+  const id = req.query.id;
+  notes = loadNotes();
+  newNotes = notes.filter(note => note.id != id);
+  syncNotes(newNotes);
+  res.send(JSON.stringify(newNotes));
+}) 
 
 module.exports = router;
 
