@@ -36,7 +36,7 @@ router.post('/notes', (req,res) =>{
     res.json(newNote);
 });
 
-// delete a note, identified by id
+// delete a note, identified by id using url query string
 router.delete('/notes:id?', (req, res) => { 
   const id = req.query.id;
   notes = loadNotes();
